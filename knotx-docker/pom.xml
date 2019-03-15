@@ -79,6 +79,7 @@
                     <dockerFile>base-alpine/Dockerfile</dockerFile>
                   </build>
                 </image>
+
               </images>
             </configuration>
           </plugin>
