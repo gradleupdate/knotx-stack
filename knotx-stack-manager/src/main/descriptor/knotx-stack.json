@@ -30,31 +30,42 @@
       "groupId": "io.knotx",
       "artifactId": "knotx-knot-action",
       "version": "\${knotx.version}",
-      "included": true
+      "included": true,
+      "transitive": false
     },
     {
       "groupId": "io.knotx",
       "artifactId": "knotx-adapter-common",
       "version": "\${knotx.version}",
-      "included": true
+      "included": true,
+      "transitive": false
     },
     // Knot.x Template Engine
     {
       "groupId": "io.knotx",
       "artifactId": "knotx-template-engine-api",
       "version": "\${knotx.version}",
-      "included": true
+      "included": true,
+      "transitive": false
     },
     {
       "groupId": "io.knotx",
       "artifactId": "knotx-template-engine-core",
       "version": "\${knotx.version}",
-      "included": true
+      "included": true,
+      "transitive": false
     },
     {
       "groupId": "io.knotx",
       "artifactId": "knotx-template-engine-handlebars",
       "version": "\${knotx.version}",
+      "included": true,
+      "transitive": false
+    },
+    {
+      "groupId": "com.github.jknack",
+      "artifactId": "handlebars",
+      "version": "4.0.6",
       "included": true
     },
     // Knot.x Data Bridge
@@ -84,13 +95,15 @@
       "groupId": "io.knotx",
       "artifactId": "knotx-forms-api",
       "version": "\${knotx.version}",
-      "included": true
+      "included": true,
+      "transitive": false
     },
     {
       "groupId": "io.knotx",
       "artifactId": "knotx-forms-core",
       "version": "\${knotx.version}",
-      "included": true
+      "included": true,
+      "transitive": false
     },
     // Vert.x dependencies
     {
