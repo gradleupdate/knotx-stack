@@ -1,6 +1,6 @@
 # A base Dockerfile for Knot.x
 
-FROM openjdk:8u191-jre-alpine
+FROM openjdk:8u171-jre-alpine
 
 MAINTAINER Marcin Czeczko <marcin.czeczko@gmail.com>
 
