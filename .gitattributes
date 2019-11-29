@@ -1,4 +1,4 @@
 * text=auto
 
 # Declare files that will always have LF line endings on checkout.
-knotx text eol=lf
+src/main/packaging/bin/knotx text eol=lf
