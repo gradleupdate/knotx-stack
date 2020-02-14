@@ -29,6 +29,7 @@ import io.vertx.junit5.VertxTestContext;
 import io.vertx.reactivex.core.Vertx;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -54,15 +55,18 @@ class ManyHandlebarsSnippetsWithDebugScenarioTest {
           String response = resp.bodyAsString();
           assertNotNull(response);
 
-          String scriptRegexp = "<script data-knotx-id=\"?.*?\" type=\"application/json\">(?<fragmentEventJson>.*?)</script>";
-          Pattern scriptPattern = Pattern.compile(scriptRegexp, Pattern.DOTALL);
+          String logScriptRegex = "<script data-knotx-debug=\"log\" data-knotx-id=\"?.*?\" type=\"application/json\">(?<fragmentEventJson>.*?)</script>";
+          String graphScriptRegex = "<script data-knotx-debug=\"graph\" data-knotx-id=\"?.*?\" type=\"application/json\">(?<graphData>.*?)</script>";
 
-          Matcher matcher = scriptPattern.matcher(response);
-          // contains 3 fragments
-          assertTrue(matcher.find());
-          assertTrue(matcher.find());
-          assertTrue(matcher.find());
-          assertFalse(matcher.find());
+          assertMatchesThreeTimes(response, logScriptRegex);
+          assertMatchesThreeTimes(response, graphScriptRegex);
         });
+  }
+
+  private void assertMatchesThreeTimes(String response, String patternString) {
+    Pattern pattern = Pattern.compile(patternString, Pattern.DOTALL);
+    Matcher matcher = pattern.matcher(response);
+    IntStream.range(0, 3).forEach(i -> assertTrue(matcher.find()));
+    assertFalse(matcher.find());
   }
 }
